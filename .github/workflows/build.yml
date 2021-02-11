@@ -33,14 +33,14 @@ jobs:
 
           arch -arm64 rake suite:idiomatic suite:bidi suite:pb suite:server
 
-    - name: Publish
-      shell: /bin/zsh {0}
-      env:
-        GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
-        OWNER: ${{github.repository_owner}}
-      run: |
-        source $HOME/.zshrc
-        chruby ruby-2.7.2
+      - name: Publish
+        shell: /bin/zsh {0}
+        env:
+          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
+          OWNER: ${{github.repository_owner}}
+        run: |
+          source $HOME/.zshrc
+          chruby ruby-2.7.2
 
-        gem build
-        gem push --host https://rubygems.pkg.github.com/${OWNER} *.gem
+          gem build
+          gem push --host https://rubygems.pkg.github.com/${OWNER} *.gem
