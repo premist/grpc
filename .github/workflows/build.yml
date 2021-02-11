@@ -44,3 +44,10 @@ jobs:
 
           gem build
           gem push --host https://rubygems.pkg.github.com/${OWNER} *.gem
+
+      - name: Store grpc_c.bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: grpc_c.bundle
+          path: tmp/arm64-darwin20/stage/src/ruby/lib/grpc/grpc_c.bundle
+          retention-days: 90 # maximum on public repos
