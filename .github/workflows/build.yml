@@ -41,7 +41,7 @@ jobs:
           source $HOME/.zshrc
           chruby ruby-2.7.2 
 
-          arch -arm64 rake suite:idiomatic suite:bidi suite:pb suite:server
+          arch -arm64 bundle exec rake suite:idiomatic suite:bidi suite:pb suite:server
 
       - name: Publish
         shell: /bin/zsh {0}
