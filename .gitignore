@@ -5,6 +5,8 @@ gens
 libs
 objs
 
+tmp/
+
 # Python items
 cython_debug/
 python_build/

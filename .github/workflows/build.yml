@@ -23,7 +23,17 @@ jobs:
 
           arch -arm64 rake compile
 
-      - name: Test
+      - name: Quick test
+        shell: /bin/zsh {0}
+        working-directory: src/ruby/test
+        run: |
+          source $HOME/.zshrc
+          chruby ruby-2.7.2
+
+          arch -arm64 bundle
+          arch -arm64 ruby -rgrpc -e "puts 'OK'"
+
+      - name: Suite
         continue-on-error: true
         shell: /bin/zsh {0}
         working-directory: src/ruby
