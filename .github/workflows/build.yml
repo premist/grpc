@@ -1,0 +1,13 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    if: github.actor == 'premist'
+    runs-on: [self-hosted, macOS-arm64]
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          arch -arm64 uname -a
+          arch -x86_64 uname -a
