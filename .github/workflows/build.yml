@@ -11,7 +11,7 @@ jobs:
         with:
           submodules: 'recursive'
       - name: Build
-        shell: /bin/zsh
+        shell: /bin/zsh {0}
         working-directory: src/ruby
         run: |
           chruby ruby-2.7.2
