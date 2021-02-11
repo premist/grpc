@@ -35,15 +35,18 @@ jobs:
 
       - name: Publish
         shell: /bin/zsh {0}
-        env:
-          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
-          OWNER: ${{github.repository_owner}}
         run: |
           source $HOME/.zshrc
           chruby ruby-2.7.2
 
           gem build
-          gem push --host https://rubygems.pkg.github.com/${OWNER} *.gem
+
+      - name: Store gem
+        uses: actions/upload-artifact@v2
+        with:
+          name: gem
+          path: grpc-*.gem
+          retention-days: 90 # maximum on public repos
 
       - name: Store grpc_c.bundle
         uses: actions/upload-artifact@v2
