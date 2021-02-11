@@ -8,6 +8,10 @@ jobs:
     runs-on: [self-hosted, macOS-arm64]
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          arch -arm64 uname -a
-          arch -x86_64 uname -a
+        with:
+          submodules: 'recursive'
+      - name: Build
+        working-directory: src/ruby
+        run: |
+          arch -arm64 bundle
+          arch -arm64 rake
