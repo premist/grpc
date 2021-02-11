@@ -14,6 +14,8 @@ jobs:
         shell: /bin/zsh {0}
         working-directory: src/ruby
         run: |
+          source $HOME/.zshrc
           chruby ruby-2.7.2
+          
           arch -arm64 bundle
           arch -arm64 rake
